@@ -1,0 +1,85 @@
+body {
+    background-color: #EEEEEE;
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    margin-top: 30px;
+    color: #201E43;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+
+.description {
+    margin-bottom: 40px;
+    color: #6c757d;
+    font-size: 1.2rem;
+}
+
+.card {
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.method_card {
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .method_card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+  
+
+.card-body {
+    padding: 30px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #134B70;
+}
+
+.card-text {
+    color: #6c757d;
+}
+
+.btn-primary {
+    background-color: #134B70;
+    border:0px;
+    transition: background-color 0.5s, border-color 0.6s;
+}
+
+    .btn-primary:hover {
+        background-color: #508C9B !important;
+    }
+
+    .btn-primary:active {
+        background-color: #508C9B !important;
+    }
+
+    .btn-primary:focus {
+        background-color: #508C9B !important;
+    }
+
+
+
+.form-control:focus {
+    border-color: #134B70;
+    box-shadow: 0 0 5px rgba(146, 26, 64, 0.5);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+.form-group label {
+    color: #134B70;
+}

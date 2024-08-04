@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-18">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Métodos de Interpolación</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container text-center mt-5">
         <h1 class="mb-4">Métodos de Interpolación</h1>
+        <p class="description">Los métodos de interpolación son técnicas numéricas utilizadas para encontrar valores intermedios dentro de un conjunto de datos discretos o una función continua. Estos métodos permiten aproximar una función desconocida a partir de un conjunto finito de puntos conocidos.</p>
         <div class="row">
-            <div class="col-md-4 mb-3">
-                <div class="card">
+            <div class="col-md-4 mb-4">
+                <div class="card method_card">
                     <div class="card-body">
                         <h5 class="card-title">Método de la Secante</h5>
+                        <p class="card-text">Método numérico para encontrar la raíz de una función utilizando aproximaciones sucesivas.</p>
                         <a href="secante.html" class="btn btn-primary">Ir a Método Secante</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
-                <div class="card">
+            <div class="col-md-4 mb-4">
+                <div class="card method_card">
                     <div class="card-body">
                         <h5 class="card-title">Método de la Bisección</h5>
+                        <p class="card-text">Método numérico que divide el intervalo en dos y selecciona el subintervalo que contiene la raíz.</p>
                         <a href="biseccion.html" class="btn btn-primary">Ir a Método Bisección</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
-                <div class="card">
+            <div class="col-md-4 mb-4">
+                <div class="card method_card">
                     <div class="card-body">
                         <h5 class="card-title">Método Newton-Raphson</h5>
+                        <p class="card-text">Método iterativo que utiliza la derivada de la función para encontrar sucesivas aproximaciones de la raíz.</p>
                         <a href="newton-raphson.html" class="btn btn-primary">Ir a Método Newton-Raphson</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-   
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
