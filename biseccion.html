@@ -10,7 +10,58 @@
     <div class="container mt-5">
         <h1 class="text-center">Método de la Bisección</h1>
         <form id="biseccion_form">
+            <div class="form-group">
+                <label for="x0_biseccion">X0</label>
+                <input type="number" class="form-control" id="x0_biseccion" required>
+            </div>
+            <div class="form-group">
+                <label for="x1_biseccion">X1</label>
+                <input type="number" class="form-control" id="x1_biseccion" required>
+            </div>
+            <div class="form-group">
+                <label for="error_total_biseccion">Error total</label>
+                <input type="number" class="form-control" id="error_total_biseccion" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="Biseccion()">Calcular</button>
+            <div id="resultados_biseccion" class="mt-3"></div>
         </form>
     </div>
+    <script>
+        function Biseccion() {
+            let x0 = parseFloat(document.getElementById("x0_biseccion").value);
+            let x1 = parseFloat(document.getElementById("x1_biseccion").value);
+            const error_total = parseFloat(document.getElementById("error_total_biseccion").value);
+            let error_relativo = 100;
+            let xr_anterior = 0;
+            let iteracion = 0;
+            const valores_errores = [];
+
+            const f = (x) => x * x - 3 * x + 2; // Hardcoded formula para testeo inicial
+
+            while (error_relativo > error_total) {
+                iteracion++;
+                const xr = (x0 + x1) / 2;
+                const f_xr = f(xr);
+                const f_x0 = f(x0);
+
+                if ((f_x0 * f_xr) < 0) {
+                    x1 = xr;
+                } else {
+                    x0 = xr;
+                }
+
+                if (iteracion > 1) {
+                    error_relativo = Math.abs((xr - xr_anterior) / xr) * 100;
+                }
+
+                xr_anterior = xr;
+                valores_errores.push(error_relativo.toFixed(4));
+            }
+
+            document.getElementById("resultados_biseccion").innerHTML = `Resultado final: xr = ${xr_anterior.toFixed(4)}<br>
+                    Error relativo de la última iteración (%): ${error_relativo.toFixed(4)}<br>
+                    Valores de error de cada iteración: ${valores_errores.join(", ")}`;
+        }
+    </script>
 </body>
 </html>
