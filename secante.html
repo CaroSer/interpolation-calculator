@@ -1,70 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-18">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Método de la Secante</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.0/math.min.js"></script>
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Método de la Secante</h1>
-        <form id="secante_form">
-            <div class="form-group">
-                <label for="x0_secante">X0</label>
-                <input type="number" class="form-control" id="x0_secante" required>
+        <div class="card">
+            <div class="card-body">
+                <h1>Método de la Secante</h1>
+                <form id="secante_form">
+                    <div class="form-group">
+                        <label for="formula_secante">Fórmula</label>
+                        <input type="text" class="form-control" id="formula_secante" required placeholder="Ej: x*2 - 3*x + 2">
+                    </div>
+                    <div class="form-group">
+                        <label for="x0_secante">X0</label>
+                        <input type="number" class="form-control" id="x0_secante" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="x1_secante">X1</label>
+                        <input type="number" class="form-control" id="x1_secante" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="error_total_secante">Error total</label>
+                        <input type="number" class="form-control" id="error_total_secante" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="Secante()">Calcular</button>
+                    <div class="form-group result mt-3">
+                        <label for="xr_secante">Xr</label>
+                        <input type="text" class="form-control" id="xr_secante" readonly>
+                    </div>
+                    <div class="form-group result">
+                        <label for="iteraciones_realizadas_secante">Iteraciones realizadas</label>
+                        <input type="text" class="form-control" id="iteraciones_realizadas_secante" readonly>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="x1_secante">X1</label>
-                <input type="number" class="form-control" id="x1_secante" required>
-            </div>
-            <div class="form-group">
-                <label for="error_total_secante">Error total</label>
-                <input type="number" class="form-control" id="error_total_secante" required>
-            </div>
-            <button type="button" class="btn btn-primary" onclick="Secante()">Calcular</button>
-            <div class="form-group mt-3">
-                <label for="xr_secante">Xr</label>
-                <input type="text" class="form-control" id="xr_secante" readonly>
-            </div>
-            <div class="form-group">
-                <label for="iteraciones_realizadas_secante">Iteraciones realizadas</label>
-                <input type="text" class="form-control" id="iteraciones_realizadas_secante" readonly>
-            </div>
-        </form>
+        </div>
     </div>
-    <script>
-        function Secante() {
-            let x0 = parseFloat(document.getElementById("x0_secante").value);
-            let x1 = parseFloat(document.getElementById("x1_secante").value);
-            const error_total = parseFloat(document.getElementById("error_total_secante").value);
-            let iteraciones = 0;
-            const iteraciones_maximas = 1000;
-            let error_calculado = 100;
-            let x2;
-
-            const f = (x) => x * x - 3 * x + 2; // Hardcoded formula para testeo inicial
-
-            while (error_calculado > error_total && iteraciones < iteraciones_maximas) {
-                const fx0 = f(x0);
-                const fx1 = f(x1);
-
-                if (fx1 - fx0 === 0) {
-                    alert("Error: División por cero en la fórmula.");
-                    return;
-                }
-
-                x2 = x1 - ((fx1 * (x1 - x0)) / (fx1 - fx0));
-                error_calculado = Math.abs((x2 - x1) / x2) * 100;
-
-                x0 = x1;
-                x1 = x2;
-                iteraciones++;
-            }
-
-            document.getElementById("xr_secante").value = x2;
-            document.getElementById("iteraciones_realizadas_secante").value = iteraciones;
-        }
-    </script>
-</body>
+    </body>
 </html>

@@ -1,58 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-18">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Método Newton-Raphson</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.0/math.min.js"></script>
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Método Newton-Raphson</h1>
-        <form id="newton_form">
-            <div class="form-group">
-                <label for="x0_newton">X0</label>
-                <input type="number" class="form-control" id="x0_newton" required>
+        <div class="card">
+            <div class="card-body">
+                <h1>Método Newton-Raphson</h1>
+                <form id="newton_form">
+                    <div class="form-group">
+                        <label for="formula_newton">Formula</label>
+                        <input type="text" class="form-control" id="formula_newton" required placeholder="Ej: x*2 - 3*x + 2">
+                    </div>
+                    <div class="form-group">
+                        <label for="x0_newton">X0</label>
+                        <input type="number" class="form-control" id="x0_newton" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="error_total_newton">Error total</label>
+                        <input type="number" class="form-control" id="error_total_newton" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="Newton_Raphson()">Calcular</button>
+                    <div class="form-group result mt-3">
+                        <label for="xr_newton">Xr</label>
+                        <input type="text" class="form-control" id="xr_newton" readonly>
+                    </div>
+                    <div class="form-group result">
+                        <label for="error_aproximado_newton">Error Relativo</label>
+                        <input type="text" class="form-control" id="error_aproximado_newton" readonly>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="error_total_newton">Error total</label>
-                <input type="number" class="form-control" id="error_total_newton" required>
-            </div>
-            <button type="button" class="btn btn-primary" onclick="Newton_Raphson()">Calcular</button>
-            <div class="form-group mt-3">
-                <label for="xr_newton">Xr</label>
-                <input type="text" class="form-control" id="xr_newton" disabled>
-            </div>
-            <div class="form-group">
-                <label for="error_aproximado_newton">Error aproximado</label>
-                <input type="text" class="form-control" id="error_aproximado_newton" disabled>
-            </div>
-        </form>
+        </div>
     </div>
-    <script>
-        function Newton_Raphson() {
-            let x0 = parseFloat(document.getElementById("x0_newton").value);
-            const error_total = parseFloat(document.getElementById("error_total_newton").value) / 10;
-            let x1, fx0, fx0D, error_aproximado_calculado;
 
-            const f = (x) => x * x - 3 * x + 2; // Hardcoded formula para testeo inicial
-            const df = (x) => 2 * x - 3; // Derivada de formula inicial
-
-            do {
-                fx0 = f(x0);
-                fx0D = df(x0);
-
-                x1 = x0 - (fx0 / fx0D);
-                error_aproximado_calculado = Math.abs((x1 - x0) / x1);
-                x0 = x1;
-            } while (error_aproximado_calculado > error_total);
-
-            document.getElementById("xr_newton").value = x1;
-            document.getElementById("error_aproximado_newton").value = error_aproximado_calculado;
-        }
-    </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
